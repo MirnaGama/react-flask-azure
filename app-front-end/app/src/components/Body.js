@@ -83,7 +83,6 @@ class Body extends Component {
 				<article>
 					<h1>{this.state.title}</h1>
 					<p>{this.state.body}</p>
-					<p>{this.state.message}</p>
 				</article>
 			</div>
 		)
