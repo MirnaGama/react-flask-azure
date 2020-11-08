@@ -21,10 +21,10 @@ def segundo_endpoint():
 @app.route('/terceiroEndpoint/<message>', methods=['GET','POST'])
 @cross_origin(supports_credentials=True)
 def terceiro_endpoint(message):
-      print("Message recebida via terceiro endpoint:  {}".format(message))
+      print("Messagem recebida via terceiro endpoint:  {}".format(message))
 
       return jsonify({'title' : "Sucesso!", 
       'message': "A comunicação com o terceiro endpoint foi bem sucedida! Messagem enviada: "+message})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host ='0.0.0.0', port = 5000,debug=True)
