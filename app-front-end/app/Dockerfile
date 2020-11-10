@@ -1,17 +1,22 @@
 # Imagem de Origem
-FROM node:13-alpine
+FROM node:latest
 
-# Diretório de trabalho(é onde a aplicação ficará dentro do container).
+# working directory
 WORKDIR /app
 
-# Adicionando `/app/node_modules/.bin` para o $PATH
+# add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
 
-# Instalando dependências da aplicação e armazenando em cache.
-COPY package.json /app/package.json
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
 
 RUN npm install --silent
-RUN npm install react-scripts@3.3.1 -g --silent
+RUN npm install react-scripts@3.4.1 -g --silent
+
+# add app
+COPY . ./
+RUN npm run build -g --silent
 
 # start app
 CMD ["npm", "start"]
